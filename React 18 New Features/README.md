@@ -64,10 +64,12 @@ The callback argument is completely removed in the new root API due to difficult
 <code>
 export default function App({ name, callback }) {
 return (
+<code>
 
 <div ref={callback}>
-<h1>{name}</h1>
+<h1 id="">{name}</h1>
 </div>
+</code>
 );
 }
 
