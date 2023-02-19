@@ -44,7 +44,8 @@ The new root API happens to be the gateway for accessing new features of React 1
 
 It also changes the way render callback and hydrate function work.
 
-=> Callback
+### Callback
+
 In the legacy root API, we could pass a callback to render which would get called after the component is rendered or updated.
 <code>
 import ReactDOM from 'react-dom';
@@ -57,13 +58,13 @@ ReactDOM.render(<App name="Saeloun blog" />, container, function () {
 console.log('Blog rendered');
 });
 </code>
+
 The callback argument is completely removed in the new root API due to difficulties in timing it properly. It is recommended to use requestIdleCallback, setTimeout, or a ref callback on the root.
-
-<code>
 //App.js
-
+<code>
 export default function App({ name, callback }) {
 return (
+
 <div ref={callback}>
 <h1>{name}</h1>
 </div>
@@ -80,7 +81,8 @@ const root = ReactDOM.createRoot(container);
 root.render(<App name="Saeloun blog" callback={() => console.log("Blog rendered")} />);
 </code>
 
-=> hydrate()
+### hydrate()
+
 hydrate() is similar to render. It is used to hydrate a container whose HTML contents were rendered by ReactDOMServer. React preserves the markup and only attaches event handlers, giving a performant first-load experience.
 
 Let’s check out the changes of hydrate before and after the new root API.
