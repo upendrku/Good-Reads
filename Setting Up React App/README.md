@@ -364,4 +364,6 @@ You’ve just created your very own React project boilerplate and deploy it live
 
 But relax! You’ve come this far, which means you already understand what webpack, Babel, Prettier and ESLint do. Webpack has many powerful loaders that can help you with many cases you’ll frequently counter when building a web application.
 
-# Credits: Nathan Sebhastian (https://www.freecodecamp.org/news/how-to-set-up-deploy-your-react-app-from-scratch-using-webpack-and-babel-a669891033d4/)
+# Credits
+
+Nathan Sebhastian (https://www.freecodecamp.org/news/how-to-set-up-deploy-your-react-app-from-scratch-using-webpack-and-babel-a669891033d4/)
