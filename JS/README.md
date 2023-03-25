@@ -18,7 +18,7 @@ let newArr = array.slice(0, 3) // [1, 2, 3]
 
 The splice( ) method changes an array, by adding or removing elements from it.
 
-- Removing Elements
+- Removing Elements:
   For removing elements, we need to give the index parameter, and the number of elements to be removed:
 
 array.splice(index, number of elements);
@@ -33,7 +33,7 @@ array; // [1, 2]
 
 If we don’t define the second parameter, every element starting from the given index will be removed from the array:
 
-- Adding Elements
+- Adding Elements:
   For adding elements, we need to give them as the 3rd, 4th, 5th parameter (depends on how many to add) to the splice ( ) method:
 
 array.splice(index, number of elements, element, element);
