@@ -260,3 +260,29 @@ for(let value of generator) {
   alert(value); // 1, then 2, then 3
 }
 ```
+
+# Callback hell
+
+Callback hell, also known as the pyramid of doom, is a situation that occurs in asynchronous programming when multiple callbacks are nested within each other, making the code difficult to read, understand, and maintain. It arises when dealing with multiple asynchronous operations that depend on each other, resulting in deeply nested callbacks.
+
+```javaScript
+asyncOperation1(function (error, result1) {
+  if (error) {
+    // Handle error
+  } else {
+    asyncOperation2(function (error, result2) {
+      if (error) {
+        // Handle error
+      } else {
+        asyncOperation3(function (error, result3) {
+          if (error) {
+            // Handle error
+          } else {
+            // Perform further operations
+          }
+        });
+      }
+    });
+  }
+});
+```
