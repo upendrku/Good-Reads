@@ -201,3 +201,62 @@ Here's a comparison between `call`, `apply`, and `bind` in tabular format:
 | Context binding | Can change the `this` value dynamically           | Can change the `this` value dynamically           | Can bind the `this` value permanently to a function              |
 
 It's important to note that while `call` and `apply` invoke the function immediately, `bind` returns a new function with the bound `this` value and partially applied arguments, which can be invoked later.
+
+# Promises
+
+There are 6 static methods of Promise class:
+
+Promise.all(promises) – waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, it becomes the error of Promise.all, and all other results are ignored.
+Promise.allSettled(promises) (recently added method) – waits for all promises to settle and returns their results as an array of objects with:
+status: "fulfilled" or "rejected"
+value (if fulfilled) or reason (if rejected).
+Promise.race(promises) – waits for the first promise to settle, and its result/error becomes the outcome.
+Promise.any(promises) (recently added method) – waits for the first promise to fulfill, and its result becomes the outcome. If all of the given promises are rejected, AggregateError becomes the error of Promise.any.
+Promise.resolve(value) – makes a resolved promise with the given value.
+Promise.reject(error) – makes a rejected promise with the given error.
+Of all these, Promise.all is probably the most common in practice.
+
+# Async Await
+
+```javaScript
+async function f() {
+
+  try {
+    let response = await fetch('/no-user-here');
+    let user = await response.json();
+  } catch(err) {
+    // catches errors both in fetch and response.json
+    alert(err);
+  }
+}
+
+f();
+```
+
+# Generators
+
+```javaScript
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+let generator = generateSequence();
+
+for(let value of generator) {
+  alert(value); // 1, then 2
+}
+
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+let generator = generateSequence();
+
+for(let value of generator) {
+  alert(value); // 1, then 2, then 3
+}
+```
