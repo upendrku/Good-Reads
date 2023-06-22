@@ -160,3 +160,44 @@ console.log(obj[symbolProperties[0]]) // Output: value 1
 ```
 
 Symbols are useful when you want to create unique property keys for objects, especially in cases where you want to prevent name collisions or make properties non-enumerable (not iterated over using `for...in` loop). They are often used to define special behaviors or metadata within objects.
+
+# Closure
+
+In JavaScript, a closure is a combination of a function and the lexical environment within which that function was declared. It allows a function to access variables from its outer (enclosing) scope even after the outer function has finished executing. In other words, a closure gives a function access to variables from an outer scope, even when the outer function has returned.
+
+Here's an example that demonstrates the concept of closures:
+
+```javascript
+function outerFunction() {
+  const outerVariable = 'I am from the outer function'
+
+  function innerFunction() {
+    console.log(outerVariable)
+  }
+
+  return innerFunction
+}
+
+const closure = outerFunction() // The inner function retains a reference to the outer scope
+
+closure() // Output: "I am from the outer function"
+```
+
+In the above example, `outerFunction` defines an inner function `innerFunction`. Inside `innerFunction`, we can access the `outerVariable` declared in the outer scope of `outerFunction`, even after `outerFunction` has finished executing. This is possible because `innerFunction` forms a closure over the environment in which it was defined, preserving the reference to `outerVariable`.
+
+Closures are commonly used in JavaScript for various purposes, such as creating private variables, implementing data encapsulation, and creating functions with persistent state. They are powerful and flexible constructs that contribute to the functional programming capabilities of JavaScript.
+
+# Call, Apply, Bind
+
+Here's a comparison between `call`, `apply`, and `bind` in tabular format:
+
+|                 | `call`                                            | `apply`                                           | `bind`                                                           |
+| --------------- | ------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------------- |
+| Invocation      | Immediately invokes the function                  | Immediately invokes the function                  | Returns a new function with the bound `this` value and arguments |
+| Arguments       | Accepts individual arguments                      | Accepts an array-like object or an actual array   | Accepts individual arguments and partially applies them          |
+| `this` value    | Explicitly sets the `this` value                  | Explicitly sets the `this` value                  | Creates a new function with the bound `this` value               |
+| Execution       | Executes the function with the provided arguments | Executes the function with the provided arguments | Does not execute the function immediately                        |
+| Return value    | Returns the result of the function execution      | Returns the result of the function execution      | Returns a new function                                           |
+| Context binding | Can change the `this` value dynamically           | Can change the `this` value dynamically           | Can bind the `this` value permanently to a function              |
+
+It's important to note that while `call` and `apply` invoke the function immediately, `bind` returns a new function with the bound `this` value and partially applied arguments, which can be invoked later.
