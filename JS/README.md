@@ -116,3 +116,47 @@ Two interesting polyfill libraries are:
 
 core js that supports a lot, allows to include only needed features.
 polyfill.io service that provides a script with polyfills, depending on the features and user’s browser.
+
+# Mark and Sweep Garbage collection
+
+Garbage collection is performed automatically. We cannot force or prevent it.
+Objects are retained in memory while they are reachable.
+Being referenced is not the same as being reachable (from a root): a pack of interlinked objects can become unreachable as a whole, as we’ve seen in the example above.
+
+# Symbol
+
+Symbol is a primitive data type in JavaScript that represents a unique identifier and can be used as a property key of an object to create hidden properties.
+
+In JavaScript, `Symbol` is a primitive data type that represents a unique identifier. It was introduced in ECMAScript 2015 (ES6) to provide a way to create unique values that can be used as object properties. Symbols are immutable and unique, meaning each symbol value is different from any other symbol value.
+
+Here's an example of how to create and use a Symbol:
+
+```javascript
+// Creating a Symbol
+const symbol1 = Symbol()
+const symbol2 = Symbol('description') // Optional description for debugging
+
+// Using Symbols as object properties
+const obj = {}
+
+// Adding a property with a Symbol key
+obj[symbol1] = 'value 1'
+obj[symbol2] = 'value 2'
+
+console.log(obj[symbol1]) // Output: value 1
+console.log(obj[symbol2]) // Output: value 2
+
+// Iterating over object properties
+for (const key in obj) {
+  console.log(key) // Symbols will not be logged
+}
+
+// Getting all symbol properties of an object
+const symbolProperties = Object.getOwnPropertySymbols(obj)
+console.log(symbolProperties) // Output: [Symbol(), Symbol(description)]
+
+// Retrieving the value associated with a Symbol property
+console.log(obj[symbolProperties[0]]) // Output: value 1
+```
+
+Symbols are useful when you want to create unique property keys for objects, especially in cases where you want to prevent name collisions or make properties non-enumerable (not iterated over using `for...in` loop). They are often used to define special behaviors or metadata within objects.
