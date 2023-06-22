@@ -38,3 +38,20 @@ const employee = {
 
 const greetFunc = person.greet.bind(employee, 'Hello');
 greetFunc(); // Hello, Jane!
+
+
+// simplest example
+
+const myFunction = function (name) {
+    console.log(`Hello, ${name}`);
+};
+
+// call
+myFunction.call({ name: "John" }); // Hello, John
+
+// apply
+myFunction.apply({ name: "Jane" }, ["Jane"]); // Hello, Jane
+
+// bind
+const boundFunction = myFunction.bind({ name: "Mary" });
+boundFunction(); // Hello, Mary
