@@ -286,3 +286,22 @@ asyncOperation1(function (error, result1) {
   }
 });
 ```
+
+# Async Handling
+
+JavaScript is generally considered a single-threaded programming language, which means it has a single call stack and executes one operation at a time. This means that JavaScript processes tasks in a sequential and blocking manner. However, JavaScript also supports asynchronous behavior through the event loop mechanism, which allows it to handle non-blocking operations efficiently.
+
+When JavaScript encounters an asynchronous task, such as making an API request or waiting for a timer to complete, it doesn't block the execution of other code. Instead of waiting for the task to finish, JavaScript registers a callback function and continues executing the remaining code. Once the asynchronous task completes, the callback function is added to a task queue.
+
+The event loop, a core component of JavaScript's runtime environment, continuously checks if the call stack is empty. When the call stack is empty, it picks the next task from the task queue and pushes its corresponding callback function onto the call stack for execution. This process is known as event-driven, non-blocking, or asynchronous programming.
+
+Here's a simplified overview of how JavaScript handles async tasks:
+
+1. JavaScript encounters an asynchronous task (e.g., making an API request).
+2. Instead of blocking the execution, JavaScript registers a callback function and continues with the rest of the code.
+3. Once the task is completed, the callback function is added to the task queue.
+4. The event loop continuously checks if the call stack is empty.
+5. When the call stack is empty, the event loop picks the next task from the task queue.
+6. The callback function associated with the task is pushed onto the call stack and executed.
+
+This mechanism allows JavaScript to handle multiple asynchronous tasks efficiently while maintaining its single-threaded nature. It ensures that the main thread is not blocked, enabling JavaScript to remain responsive and handle I/O operations, timers, and other non-blocking tasks effectively.
