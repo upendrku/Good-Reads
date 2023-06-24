@@ -63,3 +63,90 @@
 
 4. How can you generate and analyze a thread dump in Java? What information can you gather from a thread dump?
    - To generate a thread dump in Java, you can use tools like jstack, VisualVM, or your IDE's built-in thread dump feature. A thread dump provides information about the current state of threads in a Java application, including thread names, thread IDs, thread states, and stack traces for each thread. It helps in diagnosing issues like deadlocks, high CPU usage, and blocked or waiting threads. By analyzing a thread dump, you can identify thread-related problems, bottlenecks, and potential performance issues in your application.
+
+# Some questions:
+
+1. Difference between interface and abstract class:
+
+   - An interface in Java is a collection of abstract methods and constants. It defines a contract that implementing classes must adhere to. Interfaces can only have abstract methods, and they provide full abstraction and multiple inheritance-like behavior through interface implementation.
+   - An abstract class in Java is a class that cannot be instantiated and is meant to be extended by subclasses. It can contain both abstract and non-abstract methods. Abstract classes serve as a blueprint for creating subclasses and can provide default implementations of methods. They support partial abstraction and single inheritance.
+
+2. Difference between HashSet and List:
+
+   - HashSet is an implementation of the Set interface and does not allow duplicate elements. It uses hashing to store elements and provides constant-time performance for basic operations like add, remove, and contains. The order of elements in a HashSet is not guaranteed.
+   - List is an interface that allows duplicate elements and preserves the order of insertion. ArrayList and LinkedList are popular implementations of the List interface. ArrayList provides fast random access and is efficient for retrieving elements by index. LinkedList provides efficient insertion and deletion operations but slower random access.
+
+3. Override vs Overload:
+
+   - Override refers to the process of providing a different implementation of a method in a subclass that is already present in its superclass. The method signature (name and parameters) must be the same. It is used to achieve runtime polymorphism and to provide specialized behavior in subclasses.
+   - Overload refers to the process of having multiple methods with the same name but different parameters within the same class. The methods must have different parameter lists (either different types or different numbers of parameters). Overloading allows a class to have multiple methods with similar functionality but different ways of accepting inputs.
+
+4. final, finally, and finalize:
+
+   - final is a keyword used in Java with different meanings:
+     - When applied to a variable, it indicates that the variable's value cannot be changed once assigned.
+     - When applied to a method, it indicates that the method cannot be overridden in subclasses.
+     - When applied to a class, it indicates that the class cannot be subclassed.
+   - finally is a block that follows a try-catch block and is used to specify code that should be executed regardless of whether an exception is thrown or not. It is typically used for cleanup operations or releasing resources.
+   - finalize is a method defined in the Object class. It is called by the garbage collector before reclaiming an object's memory. It gives the object a chance to perform any necessary cleanup operations. However, its usage is discouraged in favor of explicit resource cleanup techniques.
+
+5. Difference between a regular Exception and a RuntimeException:
+
+   - Regular exceptions (checked exceptions) are exceptions that are checked at compile-time. They are subclasses of the Exception class but not the RuntimeException class. Methods that may throw checked exceptions must declare them in their method signature or handle them using try-catch blocks.
+   - RuntimeExceptions (unchecked exceptions) are exceptions that are not checked at compile-time. They are subclasses of the RuntimeException class. Methods can throw RuntimeExceptions without explicitly declaring them or using try-catch blocks. These exceptions usually indicate programming errors or exceptional situations that could have been avoided.
+
+6. Error vs Exception in Java:
+
+   - Errors are exceptional conditions that are generally not recoverable. They are typically caused by the JVM or the underlying system and indicate severe problems like OutOfMemoryError or StackOverflowError. Errors should not be caught or handled by application code.
+   - Exceptions, on the other hand, are exceptional conditions that can be caught and handled by application code. They represent exceptional situations that occur during the execution of a program and can be caused by both the application logic and external factors.
+
+7. What is a constructor:
+   - A constructor in Java is a special
+
+method used for initializing objects of a class. It has the same name as the class and does not have a return type, not even void. Constructors are called implicitly when an object is created using the `new` keyword. They are responsible for setting initial values to the object's state and performing any necessary setup tasks.
+
+8. What is a static variable:
+
+   - A static variable, also known as a class variable, belongs to the class rather than to any instance of the class. It is shared among all instances of the class and can be accessed using the class name. Static variables are declared using the `static` keyword and are initialized only once, when the class is loaded. They can be accessed without creating an object of the class.
+
+9. What is a static method:
+
+   - A static method is a method that belongs to the class rather than to any instance of the class. It can be called using the class name and does not require an object to invoke it. Static methods are declared using the `static` keyword and cannot access instance variables or instance methods directly (unless they have a reference to an instance).
+
+10. What is a static block:
+
+    - A static block, also known as a static initializer, is a block of code that is executed only once when the class is loaded into memory. It is used to initialize static variables or perform any necessary initialization tasks for the class. Static blocks are declared using the `static` keyword and are executed in the order they appear in the class.
+
+11. What are POJOs:
+
+    - POJO stands for Plain Old Java Object. It is a term used to describe a simple Java object that encapsulates data and provides accessors and mutators (getters and setters) for that data. POJOs are typically used as data transfer objects (DTOs) or models to represent structured data in a plain and straightforward manner, without any special frameworks or dependencies.
+
+12. Two types of Exceptions in Java and their differences:
+
+    - Checked Exceptions: These are exceptions that are checked at compile-time. They extend the Exception class (but not RuntimeException) and must be either caught or declared in the method signature using the `throws` keyword. Examples include IOException, SQLException, and ClassNotFoundException.
+    - Unchecked Exceptions (RuntimeExceptions): These are exceptions that are not checked at compile-time. They extend the RuntimeException class and do not require explicit handling. Examples include NullPointerException, IllegalArgumentException, and ArrayIndexOutOfBoundsException. The main difference is that checked exceptions must be handled or declared, while unchecked exceptions do not require this.
+
+13. JVM (Java Virtual Machine) and why Java is called the "Platform Independent Programming Language":
+
+    - JVM is the virtual machine responsible for executing Java bytecode. It provides an environment in which Java programs can run independently of the underlying hardware and operating system. JVM translates compiled Java bytecode into machine-specific instructions at runtime.
+    - Java is called a "Platform Independent Programming Language" because Java source code is compiled into bytecode that can be executed on any JVM, regardless of the underlying platform or operating system. This allows Java programs to be written once and run anywhere, promoting portability and compatibility.
+
+14. Difference between JDK and JRE:
+
+    - JDK (Java Development Kit) is a software development kit that provides tools, libraries, and APIs for developing Java applications. It includes the Java compiler, runtime environment (JRE), and additional tools for debugging, documentation generation, and more. JDK is used by developers to write, compile, and debug Java code.
+    - JRE (Java Runtime Environment) is the runtime environment required for executing Java applications. It includes the JVM, core libraries, and other dependencies necessary for running Java programs. JRE does not include development tools and is used by end-users to run Java applications.
+
+15. Importance
+
+of hashCode() and equals() methods: - The hashCode() and equals() methods are used for object comparison and hashing in Java. - hashCode(): The hashCode() method is used to calculate a hash value of an object. It is used in data structures like HashMap and HashSet for efficient storage and retrieval of objects. It is important to override the hashCode() method when overriding the equals() method to ensure consistent behavior. - equals(): The equals() method is used to compare the equality of two objects. It is used to determine if two objects are logically equivalent. It is important to override the equals() method to provide a customized comparison based on the object's state.
+
+16. Generics:
+
+    - Generics in Java allow types (classes and interfaces) to be parameterized. They enable the creation of classes, methods, and interfaces that can operate on different data types without sacrificing type safety. Generics provide compile-time type checking and eliminate the need for explicit type casting.
+    - Generics are denoted using angle brackets `< >` and can be used with classes, interfaces, methods, and even individual variables. They allow the specification of type parameters, which are placeholders for actual types that will be provided when using the generic class or method.
+
+17. Class modifiers and default class modifier:
+    - Class modifiers in Java are keywords used to modify the behavior or characteristics of classes. Some common class modifiers include `public`, `abstract`, `final`, `static`, `strictfp`, and `private`. Modifiers control the accessibility, inheritance, and behavior of classes.
+    - The default class modifier, also known as the package-private modifier, is the absence of any access modifier keyword. It allows the class to be accessed within the same package but not from outside the package. Classes with the default modifier can be seen as package-private, meaning they are only accessible within the package they belong to.
+
+https://usemynotes.com/java-interview-questions-and-answers/
