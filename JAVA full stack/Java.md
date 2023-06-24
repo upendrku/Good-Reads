@@ -149,4 +149,26 @@ of hashCode() and equals() methods: - The hashCode() and equals() methods are us
     - Class modifiers in Java are keywords used to modify the behavior or characteristics of classes. Some common class modifiers include `public`, `abstract`, `final`, `static`, `strictfp`, and `private`. Modifiers control the accessibility, inheritance, and behavior of classes.
     - The default class modifier, also known as the package-private modifier, is the absence of any access modifier keyword. It allows the class to be accessed within the same package but not from outside the package. Classes with the default modifier can be seen as package-private, meaning they are only accessible within the package they belong to.
 
+# Some other resources:
+
 https://usemynotes.com/java-interview-questions-and-answers/
+
+# Features in Java 8
+
+Java 8 introduced several significant features and enhancements. Some of the key features of Java 8 are:
+
+1. Lambda Expressions: Lambda expressions allow the representation of anonymous functions in Java. They provide a concise way of writing functional interfaces by removing the need for anonymous inner classes.
+
+2. Stream API: The Stream API provides a declarative way to process collections of objects. It allows for efficient and parallel execution of operations such as filtering, mapping, and reducing. Streams simplify the processing of large data sets and enable functional-style programming.
+
+3. Default Methods: Default methods allow interfaces to have method implementations. It enables adding new methods to existing interfaces without breaking the implementations of classes that implement those interfaces. Default methods help in achieving backward compatibility in existing codebases.
+
+4. Functional Interfaces: Java 8 introduced the `@FunctionalInterface` annotation, which is used to declare functional interfaces. Functional interfaces have a single abstract method and can be used with lambda expressions and method references. They provide the foundation for writing functional-style code in Java.
+
+5. Method References: Method references provide a shorthand syntax for referring to methods or constructors of classes. They simplify the usage of lambda expressions when they only call an existing method or constructor.
+
+6. Optional Class: The Optional class is a container object that may or may not contain a non-null value. It helps in avoiding null pointer exceptions by encouraging explicit handling of null values. Optional provides methods for working with potentially absent values in a more readable and concise way.
+
+7. Date and Time API (java.time): Java 8 introduced a new Date and Time API that improves upon the existing Date and Calendar classes. The new API provides better immutability, thread-safety, and ease of use. It includes classes such as LocalDate, LocalTime, LocalDateTime, and ZonedDateTime for working with dates, times, and time zones.
+
+8. Default Methods in Interfaces: Java 8 allows interfaces to have default methods, which are methods with a default implementation. Default methods enable adding new functionality to existing interfaces without breaking the code that implements those interfaces.
