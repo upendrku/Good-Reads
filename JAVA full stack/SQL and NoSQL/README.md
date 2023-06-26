@@ -93,7 +93,133 @@
    - NoSQL databases provide eventual consistency, meaning that changes made to the data will be propagated and become consistent across nodes over time. This approach prioritizes scalability and availability over immediate consistency.
 
 5. What is sharding in NoSQL databases?
+
    - Sharding is the process of distributing data across multiple nodes or machines in a NoSQL database. It allows for horizontal scalability by dividing the dataset into smaller subsets and storing them on different nodes.
+
+6. Stored Procedures:
+   Stored procedures are precompiled database programs that are stored in the database server. They contain a set of SQL statements and procedural logic, which can be executed as a single unit. Stored procedures are typically used to encapsulate complex database operations and provide an interface for other applications to interact with the database.
+
+Example: Let's consider a scenario where you have an e-commerce application. You can create a stored procedure called `calculate_total_price` that calculates the total price of a customer's order based on the products and quantities.
+
+```sql
+CREATE PROCEDURE calculate_total_price(IN customerId INT, OUT totalPrice DECIMAL(10, 2))
+BEGIN
+    SELECT SUM(quantity * price) INTO totalPrice
+    FROM orders
+    JOIN order_items ON orders.order_id = order_items.order_id
+    JOIN products ON order_items.product_id = products.product_id
+    WHERE orders.customer_id = customerId;
+END;
+```
+
+In this example, the stored procedure takes a customer ID as input and returns the total price as output. It retrieves the relevant data from multiple tables, performs calculations, and stores the result in the `totalPrice` output parameter. This stored procedure can be called by the application whenever it needs to calculate the total price for a specific customer's order.
+
+7. Types of Joins in MySQL:
+   MySQL supports different types of JOIN operations to combine rows from multiple tables based on a related column between them. The main types of JOINs in MySQL are:
+
+- INNER JOIN: Returns only the matching rows from both tables based on the join condition.
+
+Example: Let's say you have two tables, `Customers` and `Orders`. You can use an INNER JOIN to retrieve the orders placed by customers.
+
+```sql
+SELECT Orders.order_id, Customers.customer_name
+FROM Orders
+INNER JOIN Customers ON Orders.customer_id = Customers.customer_id;
+```
+
+- LEFT JOIN: Returns all the rows from the left table and the matching rows from the right table based on the join condition. If no match is found, NULL values are included for the columns of the right table.
+
+Example: Consider the same `Customers` and `Orders` tables. A LEFT JOIN can be used to retrieve all customers and their orders, including customers who haven't placed any orders.
+
+```sql
+SELECT Customers.customer_name, Orders.order_id
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+- RIGHT JOIN: Returns all the rows from the right table and the matching rows from the left table based on the join condition. If no match is found, NULL values are included for the columns of the left table.
+
+Example: Continuing with the `Customers` and `Orders` tables, a RIGHT JOIN can be used to retrieve all orders and their corresponding customers, including orders without associated customers.
+
+```sql
+SELECT Customers.customer_name, Orders.order_id
+FROM Customers
+RIGHT JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+- FULL JOIN: Returns all the rows from both tables, matching rows from both tables based on the join condition. If no match is found, NULL values are included for the columns of the non-matching table.
+
+Example: Using the same `Customers` and `Orders` tables, a FULL JOIN can be used to retrieve all customers and their orders, including customers without orders and orders without customers.
+
+```sql
+SELECT Customers.customer_name, Orders.order_id
+FROM Customers
+FULL JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+8. Difference between DELETE and TRUNCATE in MySQL:
+   DELETE and TRUNCATE are both used to remove data from a table in MySQL, but they differ in their behavior.
+
+- DELETE: The DELETE statement is used to delete specific rows from a table based on a condition. It is a logged operation, meaning that it generates
+
+undo logs and can be rolled back.
+
+Example: Let's say you have a table called `Customers` and you want to delete customers who haven't placed any orders.
+
+```sql
+DELETE FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Orders);
+```
+
+In this example, the DELETE statement deletes rows from the `Customers` table where the customer ID is not found in the subquery that retrieves customer IDs from the `Orders` table.
+
+- TRUNCATE: The TRUNCATE statement is used to remove all rows from a table. It is a non-logged operation, meaning that it does not generate undo logs and cannot be rolled back. TRUNCATE also resets the auto-increment value for the table.
+
+Example: Suppose you have a table called `Products` and you want to remove all products.
+
+```sql
+TRUNCATE TABLE Products;
+```
+
+In this example, the TRUNCATE statement removes all rows from the `Products` table, effectively emptying the table.
+
+9. Difference between Stored Procedures and Functions in MySQL:
+   Stored procedures and functions in MySQL are both database objects that encapsulate a set of SQL statements and procedural logic. However, there are some differences between them:
+
+- Purpose: A stored procedure is primarily used to perform an action or a series of actions in the database, while a function is used to return a single value or a table of values.
+
+- Usage: Stored procedures are typically called by applications or other stored procedures to perform specific operations or tasks. Functions are usually used within SQL statements to retrieve computed values.
+
+- Return Type: Stored procedures do not have a return type. They can have input parameters and output parameters to pass values between the procedure and the calling code. Functions have a specific return type defined when they are created.
+
+- Invocation: Stored procedures are invoked using the CALL statement or can be executed automatically as triggers or events. Functions are invoked within SQL statements, such as SELECT or WHERE clauses.
+
+- Transaction Control: Stored procedures can contain transaction control statements like COMMIT and ROLLBACK to manage database transactions. Functions cannot perform transaction control.
+
+- Use in Queries: Stored procedures cannot be used directly in queries, while functions can be used in SELECT statements or as part of expressions.
+
+Example:
+
+```sql
+-- Stored Procedure
+DELIMITER //
+CREATE PROCEDURE GetCustomerCount(IN city VARCHAR(50), OUT count INT)
+BEGIN
+    SELECT COUNT(*) INTO count FROM Customers WHERE City = city;
+END //
+DELIMITER ;
+
+-- Function
+DELIMITER //
+CREATE FUNCTION GetCustomerCount(city VARCHAR(50)) RETURNS INT
+BEGIN
+    DECLARE count INT;
+    SELECT COUNT(*) INTO count FROM Customers WHERE City = city;
+    RETURN count;
+END //
+DELIMITER ;
+```
+
+In this example, the stored procedure `GetCustomerCount` takes a city as input and returns the customer count through an output parameter. The function `GetCustomerCount` takes a city as input and returns the customer count as the result. The stored procedure can be invoked using the CALL statement, while the function can be used in a SELECT statement.
 
 # Compare both
 
