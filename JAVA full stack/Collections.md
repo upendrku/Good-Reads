@@ -950,7 +950,7 @@ This example demonstrates the basic usage of `LinkedList` and its methods. `Link
 
 # HashMap class
 
-Certainly! The `HashMap` class in Java is an implementation of the `Map` interface that stores key-value pairs. It provides constant-time performance for basic operations such as `get`, `put`, `containsKey`, and `remove`, assuming a good hash function and properly-sized initial capacity.
+The `HashMap` class in Java is an implementation of the `Map` interface that stores key-value pairs. It provides constant-time performance for basic operations such as `get`, `put`, `containsKey`, and `remove`, assuming a good hash function and properly-sized initial capacity.
 
 Here's an example of how to use the `HashMap` class in Java:
 
